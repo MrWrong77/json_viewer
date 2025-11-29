@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:json_viewer/component/handler.dart';
+import 'package:json_viewer/component/text_operator.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -11,22 +12,22 @@ class HomePage extends StatelessWidget {
       body: Column(
         spacing: 20,
         children: [
-          const Center(child: Text('Welcome to JSON Viewer!')),
+          Text('Welcome to JSON Viewer!'),
           TextFormField(
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
               hintText: 'Enter JSON here',
               labelText: 'Enter valid JSON to view the tree structure',
             ),
           ),
 
-          ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            scrollDirection: Axis.horizontal,
+          Row(
+            spacing: 10,
             children: [
               Handler(controller: jsonController),
-              Handler(controller: jsonController),
+              TextOperator(name: 'Key'),
             ],
           ),
         ],
